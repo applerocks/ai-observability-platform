@@ -9,11 +9,12 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "artemis-tfstate-994878981126"
-    key            = "artemis/terraform.tfstate"
-    region         = "us-east-2"
-    dynamodb_table = "artemis-tflock"
-    encrypt        = true
+    bucket       = "artemis-tfstate-994878981126"
+    key          = "artemis/terraform.tfstate"
+    region       = "us-east-2"
+    profile      = "suresh-aws"
+    use_lockfile = true
+    encrypt      = true
   }
 }
 
