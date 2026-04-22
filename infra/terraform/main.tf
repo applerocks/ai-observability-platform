@@ -23,3 +23,21 @@ module "vpc" {
   enable_nat_gateway   = true
   tags                 = local.tags
 }
+
+# -----------------------------------------------
+# EKS
+# -----------------------------------------------
+module "eks" {
+  source = "./modules/eks"
+
+  project             = local.project
+  vpc_id              = module.vpc.vpc_id
+  subnet_ids          = module.vpc.private_subnet_ids
+  kubernetes_version  = "1.31"
+  node_instance_types = ["t3.large"]
+  node_desired_size   = 2
+  node_min_size       = 2
+  node_max_size       = 4
+  node_disk_size      = 30
+  tags                = local.tags
+}
