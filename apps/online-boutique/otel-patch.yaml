@@ -1,0 +1,9 @@
+# Patch to add OTel env vars to all Online Boutique deployments
+# Apply after the base manifests:
+#   kubectl set env deployment --all -n online-boutique \
+#     OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector.observability.svc.cluster.local:4317 \
+#     OTEL_RESOURCE_ATTRIBUTES=service.namespace=online-boutique
+#
+# Or apply individually per deployment if needed.
+# The Online Boutique microservices have built-in OTel instrumentation
+# that activates when OTEL_EXPORTER_OTLP_ENDPOINT is set.

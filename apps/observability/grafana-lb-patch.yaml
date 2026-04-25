@@ -1,0 +1,6 @@
+metadata:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-target-type: ip
+spec:
+  type: LoadBalancer
